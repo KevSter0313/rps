@@ -1,3 +1,12 @@
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) =>
+  button.addEventListener("click", (e) => {
+    let playerChoice = e.target.id;
+    let computerChoice = getComputerChoice();
+    decideWinner(playerChoice, computerChoice);
+  })
+);
+
 function getComputerChoice() {
   // Generates a number between 1 and 3
   let number = Math.floor(Math.random() * (3 - 1) + 1);
@@ -14,35 +23,20 @@ function getComputerChoice() {
 }
 
 function decideWinner(playerChoice, computerChoice) {
-  console.log(`${playerChoice} vs ${computerChoice}`);
+  alert(`${playerChoice} vs ${computerChoice}`);
   if (playerChoice == "rock" && computerChoice == "scissors")
-    console.log("Player wins");
+    alert("Player wins");
   else if (playerChoice == "rock" && computerChoice == "paper")
-    console.log("Computer wins");
+    alert("Computer wins");
   else if (playerChoice == "paper" && computerChoice == "rock")
-    console.log("Player wins");
+    alert("Player wins");
   else if (playerChoice == "paper" && computerChoice == "scissors")
-    console.log("Computer wins");
+    alert("Computer wins");
   else if (playerChoice == "scissors" && computerChoice == "paper")
-    console.log("Player wins");
+    alert("Player wins");
   else if (playerChoice == "scissors" && computerChoice == "rock")
-    console.log("Computer wins");
+    alert("Computer wins");
   else {
-    console.log("It's a draw");
+    alert("It's a draw");
   }
 }
-
-function playOneRound() {
-  let playerChoice;
-  let computerChoice = getComputerChoice();
-  do {
-    playerChoice = prompt("Rock, Paper or Scissors?: ").toLowerCase();
-  } while (
-    playerChoice != "rock" &&
-    playerChoice != "paper" &&
-    playerChoice != "scissors"
-  );
-  decideWinner(playerChoice, computerChoice);
-}
-
-playOneRound();
